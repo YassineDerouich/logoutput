@@ -27,3 +27,4 @@ spec:
           volumeMounts:
           - name: shared
             mountPath: /usr/src/app/files
+#
