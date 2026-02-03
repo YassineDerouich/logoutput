@@ -7,4 +7,4 @@ resources:
 images:
 - name: yasder/logoutput
   newName: yasder/logoutput
-  newTag: 063b0b78b1ea0fbf5599512cc886917bd1e8d4c2
+  newTag: eb81f55cbf5f9a2f935f286e6d3aa9ea8bee395d
