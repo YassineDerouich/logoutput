@@ -1,0 +1,42 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  namespace: exercises
+  name: logoutput
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: logoutput
+  template:
+    metadata:
+      labels:
+        app: logoutput
+    spec:
+      containers:
+        - name: logoutput
+          image: yasder/logoutput:5412
+          readinessProbe:
+            initialDelaySeconds: 10
+            periodSeconds: 5
+            httpGet:
+              path: /healthz
+              port: 3000
+          volumeMounts:
+            - name: file-volume
+              mountPath: /usr/src/app/file
+              readOnly: true
+          env:
+            - name: MESSAGE
+              valueFrom:
+                configMapKeyRef:
+                  name: myvars
+                  key: message
+      volumes:
+        - name: file-volume
+          configMap:
+            name: myvars
+
+            items:
+            - key: "information.txt"
+              path: "information.txt"
