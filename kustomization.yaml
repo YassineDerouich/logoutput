@@ -1,8 +1,10 @@
 apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 resources:
-  - configmap.yaml
-  - deployment.yaml
-  - service.yaml
+- configmap.yaml
+- deployment.yaml
+- service.yaml
 images:
-  - name: yasder/logoutput
+- name: yasder/logoutput
+  newName: yasder/logoutput
+  newTag: 063b0b78b1ea0fbf5599512cc886917bd1e8d4c2
